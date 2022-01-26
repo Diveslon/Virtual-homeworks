@@ -28,6 +28,20 @@
 - Vagrant
 - Ansible
 
+### Ответ
+```
+root@DESKTOP-PF94QOV:~# dpkg-query -l virtualbox vagrant ansible
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version                       Architecture Description
++++-==============-=============================-============-=======================================================================
+ii  ansible        2.9.6+dfsg-1                  all          Configuration management, deployment, and task execution system
+ii  vagrant        2.2.6+dfsg-2ubuntu3           all          Tool for building and distributing virtualized development environments
+ii  virtualbox     6.1.26-dfsg-3~ubuntu1.20.04.2 amd64        x86 virtualization solution - base binaries
+root@DESKTOP-PF94QOV:~#
+```
+
 ## Задача 4
 Воспроизвести практическую часть лекции самостоятельно.
 Создать виртуальную машину.
