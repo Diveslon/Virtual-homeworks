@@ -22,6 +22,8 @@ Hey, Netology
 ```
 Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.
 
+### Ответ: https://hub.docker.com/repository/docker/diveslon/hometask53
+
 ## Задача 2
 
 Посмотрите на сценарий ниже и ответьте на вопрос:
