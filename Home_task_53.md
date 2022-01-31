@@ -85,6 +85,9 @@ root@diveslon-Ubuntu:~/data#
 
 Соберите Docker образ с Ansible, загрузите на Docker Hub и пришлите ссылку вместе с остальными ответами к задачам.
 
+### Ответ
+https://hub.docker.com/r/diveslon/ansible
+
 
 ---
 
