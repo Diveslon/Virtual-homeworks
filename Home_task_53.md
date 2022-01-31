@@ -53,6 +53,32 @@ https://hub.docker.com/repository/docker/diveslon/hometask53
 - Добавьте еще один файл в папку ```/data``` на хостовой машине;
 - Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
 
+### Ответ
+```
+root@diveslon-Ubuntu:~# 
+root@diveslon-Ubuntu:~# docker run --name test-centos -v /root/data/:/root/share/data -d centos tail -f /dev/null
+16f7ad137fdfc11fc8a24f8365b5da10fbb8853a9c0d7fb4ccb8aa4ab74771da
+root@diveslon-Ubuntu:~# docker run --name test-debian -v /root/data/:/root/share/data -d debian tail -f /dev/null
+f08bae465d3b5f6bf4db12fb050ecbbae564e08a8a8fd09092807296229e0089
+root@diveslon-Ubuntu:~# docker ps
+CONTAINER ID   IMAGE     COMMAND               CREATED          STATUS          PORTS     NAMES
+f08bae465d3b   debian    "tail -f /dev/null"   10 seconds ago   Up 9 seconds              test-debian
+16f7ad137fdf   centos    "tail -f /dev/null"   33 seconds ago   Up 32 seconds             test-centos
+root@diveslon-Ubuntu:~# docker exec -it test-centos bash
+[root@16f7ad137fdf /]# cd /root/share/data/
+[root@16f7ad137fdf data]# echo 'This is a first test!' >> test1.txt
+[root@16f7ad137fdf data]# exit
+root@diveslon-Ubuntu:~# cd /root/data/
+root@diveslon-Ubuntu:~/data# echo 'This is a second test!' >> test2.txt
+root@diveslon-Ubuntu:~/data# docker exec -it test-debian bash
+root@f08bae465d3b:/# cd /root/share/data/
+root@f08bae465d3b:~/share/data# ls
+test1.txt  test2.txt
+root@f08bae465d3b:~/share/data# 
+exit
+root@diveslon-Ubuntu:~/data#
+```
+
 ## Задача 4 (*)
 
 Воспроизвести практическую часть лекции самостоятельно.
