@@ -6,7 +6,7 @@
 
 ### Ответ
 <p align="center">
-  <img width="1200" height="600" src="Picture_54_1.png">
+  <img width="1200" height="600" src="Picture_54_1.PNG">
 </p>
 
 ## Задача 2
