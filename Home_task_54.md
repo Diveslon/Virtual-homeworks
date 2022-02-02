@@ -24,7 +24,7 @@
 
 ### Ответ
 <p align="center">
-  <img width="1057" height="751" src="Picture_54_3.PNG">
+  <img width="1066" height="815" src="Picture_54_3.PNG">
 </p>
 
 ## Задача 4 (*)
