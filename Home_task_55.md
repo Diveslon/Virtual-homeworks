@@ -36,7 +36,7 @@ docker service ls
 ```
 ### Ответ
 <p align="center">
-  <img width="2122" height="218" src="Picture_55_3.PNG">
+  <img width="2122" height="260" src="Picture_55_3.PNG">
 </p>
 
 ## Задача 4 (*)
