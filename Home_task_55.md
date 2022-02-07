@@ -22,7 +22,7 @@ docker node ls
 ```
 ### Ответ
 <p align="center">
-  <img width="1255" height="218" src="Picture_55_2.PNG">
+  <img width="1255" height="260" src="Picture_55_2.PNG">
 </p>
 
 
@@ -34,6 +34,10 @@ docker node ls
 ```
 docker service ls
 ```
+### Ответ
+<p align="center">
+  <img width="2122" height="218" src="Picture_55_3.PNG">
+</p>
 
 ## Задача 4 (*)
 
