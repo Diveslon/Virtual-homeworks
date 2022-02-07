@@ -21,6 +21,9 @@
 docker node ls
 ```
 ### Ответ
+<p align="center">
+  <img width="1255" height="218" src="Picture_55_2.PNG">
+</p>
 
 
 ## Задача 3
