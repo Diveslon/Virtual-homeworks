@@ -12,6 +12,9 @@ version: "3.7"
 services:
   postgres:
     image: postgres:12
+   environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "12345678"
     volumes:
       - /home/diveslon/homework62/postgres/data:/data
       - /home/diveslon/homework62/postgres/backup:/backup
