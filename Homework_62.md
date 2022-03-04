@@ -6,6 +6,18 @@
 в который будут складываться данные БД и бэкапы.
 
 Приведите получившуюся команду или docker-compose манифест.
+### Ответ
+```
+version: "3.7"
+services:
+  postgres:
+    image: postgres:12
+    volumes:
+      - /home/diveslon/homework62/postgres/data:/data
+      - /home/diveslon/homework62/postgres/backup:/backup
+    ports:
+      - "5432:5432"
+```      
 
 ## Задача 2
 
