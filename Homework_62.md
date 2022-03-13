@@ -181,6 +181,18 @@ count|
  
 Подсказк - используйте директиву `UPDATE`.
 
+### Ответ
+```
+Поскольку поле индекса связи является обязательным, то добавил в таблицу заказов запись НЕТ Заказа - она получила индекс 6. 
+insert into orders(name,price) values('НЕТ ЗАКАЗА',0);
+Далее свяжем заказы, но сначала сделаем так, что ни у кого нет заказов
+update clients set order_id = 6 where clients.id > 0;
+update clients set order_id = 3 where clients.id = 1;
+update clients set order_id = 4 where clients.id = 2;
+update clients set order_id = 5 where clients.id = 3;
+
+```
+
 ## Задача 5
 
 Получите полную информацию по выполнению запроса выдачи всех пользователей из задачи 4 
