@@ -209,6 +209,22 @@ family              |name   |
 
 Приведите получившийся результат и объясните что значат полученные значения.
 
+### Ответ
+```
+explain select clients.family, orders.name from clients left join orders on clients.order_id = orders.id where orders.id<6;
+
+QUERY PLAN                                                                            |
+--------------------------------------------------------------------------------------+
+Hash Join  (cost=27.25..47.49 rows=270 width=64)                                      |
+  Hash Cond: (clients.order_id = orders.id)                                           |
+  ->  Seq Scan on clients  (cost=0.00..18.10 rows=810 width=36)                       |
+  ->  Hash  (cost=22.25..22.25 rows=400 width=36)                                     |
+        ->  Bitmap Heap Scan on orders  (cost=7.25..22.25 rows=400 width=36)          |
+              Recheck Cond: (id < 6)                                                  |
+              ->  Bitmap Index Scan on orders_pkey  (cost=0.00..7.15 rows=400 width=0)|
+                    Index Cond: (id < 6)                                              |
+```
+
 ## Задача 6
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).
