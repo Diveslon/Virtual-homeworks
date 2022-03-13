@@ -48,6 +48,77 @@ services:
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
 - список пользователей с правами над таблицами test_db
 
+### Ответ
+```
+1. SELECT datname FROM pg_database;
+
+datname  |
+---------+
+postgres |
+root     |
+template1|
+template0|
+test_db  |
+testdb1  |
+
+2. 
+SELECT column_name, data_type FROM INFORMATION_SCHEMA.columns WHERE table_name = 'clients';
+column_name|data_type|
+-----------+---------+
+id         |integer  |
+family     |text     |
+country    |text     |
+order_id   |integer  |
+
+SELECT column_name, data_type FROM INFORMATION_SCHEMA.columns WHERE table_name = 'orders';
+column_name|data_type|
+-----------+---------+
+id         |integer  |
+name       |text     |
+price      |integer  |
+
+3.  SELECT * FROM information_schema.table_privileges WHERE table_name = 'orders' or table_name = 'clients';
+4.
+grantor|grantee         |table_catalog|table_schema|table_name|privilege_type|is_grantable|with_hierarchy|
+-------+----------------+-------------+------------+----------+--------------+------------+--------------+
+root   |root            |test_db      |public      |orders    |INSERT        |YES         |NO            |
+root   |root            |test_db      |public      |orders    |SELECT        |YES         |YES           |
+root   |root            |test_db      |public      |orders    |UPDATE        |YES         |NO            |
+root   |root            |test_db      |public      |orders    |DELETE        |YES         |NO            |
+root   |root            |test_db      |public      |orders    |TRUNCATE      |YES         |NO            |
+root   |root            |test_db      |public      |orders    |REFERENCES    |YES         |NO            |
+root   |root            |test_db      |public      |orders    |TRIGGER       |YES         |NO            |
+root   |test_admin_user |test_db      |public      |orders    |INSERT        |NO          |NO            |
+root   |test_admin_user |test_db      |public      |orders    |SELECT        |NO          |YES           |
+root   |test_admin_user |test_db      |public      |orders    |UPDATE        |NO          |NO            |
+root   |test_admin_user |test_db      |public      |orders    |DELETE        |NO          |NO            |
+root   |test_admin_user |test_db      |public      |orders    |TRUNCATE      |NO          |NO            |
+root   |test_admin_user |test_db      |public      |orders    |REFERENCES    |NO          |NO            |
+root   |test_admin_user |test_db      |public      |orders    |TRIGGER       |NO          |NO            |
+root   |test_simple_user|test_db      |public      |orders    |INSERT        |NO          |NO            |
+root   |test_simple_user|test_db      |public      |orders    |SELECT        |NO          |YES           |
+root   |test_simple_user|test_db      |public      |orders    |UPDATE        |NO          |NO            |
+root   |test_simple_user|test_db      |public      |orders    |DELETE        |NO          |NO            |
+root   |root            |test_db      |public      |clients   |INSERT        |YES         |NO            |
+root   |root            |test_db      |public      |clients   |SELECT        |YES         |YES           |
+root   |root            |test_db      |public      |clients   |UPDATE        |YES         |NO            |
+root   |root            |test_db      |public      |clients   |DELETE        |YES         |NO            |
+root   |root            |test_db      |public      |clients   |TRUNCATE      |YES         |NO            |
+root   |root            |test_db      |public      |clients   |REFERENCES    |YES         |NO            |
+root   |root            |test_db      |public      |clients   |TRIGGER       |YES         |NO            |
+root   |test_admin_user |test_db      |public      |clients   |INSERT        |NO          |NO            |
+root   |test_admin_user |test_db      |public      |clients   |SELECT        |NO          |YES           |
+root   |test_admin_user |test_db      |public      |clients   |UPDATE        |NO          |NO            |
+root   |test_admin_user |test_db      |public      |clients   |DELETE        |NO          |NO            |
+root   |test_admin_user |test_db      |public      |clients   |TRUNCATE      |NO          |NO            |
+root   |test_admin_user |test_db      |public      |clients   |REFERENCES    |NO          |NO            |
+root   |test_admin_user |test_db      |public      |clients   |TRIGGER       |NO          |NO            |
+root   |test_simple_user|test_db      |public      |clients   |INSERT        |NO          |NO            |
+root   |test_simple_user|test_db      |public      |clients   |SELECT        |NO          |YES           |
+root   |test_simple_user|test_db      |public      |clients   |UPDATE        |NO          |NO            |
+root   |test_simple_user|test_db      |public      |clients   |DELETE        |NO          |NO            |
+```
+
 ## Задача 3
 
 Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:
