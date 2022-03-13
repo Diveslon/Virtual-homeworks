@@ -191,6 +191,15 @@ update clients set order_id = 3 where clients.id = 1;
 update clients set order_id = 4 where clients.id = 2;
 update clients set order_id = 5 where clients.id = 3;
 
+select clients.family, orders.name from clients left join orders on clients.order_id = orders.id where orders.id<6;
+
+family              |name   |
+--------------------+-------+
+Иванов Иван Иванович|Книга  |
+Петров Петр Петрович|Монитор|
+Иоганн Себастьян Бах|Гитара |
+
+
 ```
 
 ## Задача 5
