@@ -149,6 +149,20 @@ root   |test_simple_user|test_db      |public      |clients   |DELETE        |NO
     - запросы 
     - результаты их выполнения.
 
+### Ответ
+```
+select count(*) from clients;
+count|
+-----+
+    5|
+
+select count(*) from orders;
+count|
+-----+
+    5|
+
+```
+
 ## Задача 4
 
 Часть пользователей из таблицы clients решили оформить заказы из таблицы orders.
