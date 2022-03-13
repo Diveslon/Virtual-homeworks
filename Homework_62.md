@@ -236,3 +236,9 @@ Hash Join  (cost=27.25..47.49 rows=270 width=64)                                
 Восстановите БД test_db в новом контейнере.
 
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
+
+### Ответ
+```
+pg_dump -Fc test_db > /backup/test_db.dump
+pg_restore -d test_db1 /backup/test_db.dump
+```
