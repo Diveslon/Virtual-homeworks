@@ -56,6 +56,17 @@ Threads: 2  Questions: 5  Slow queries: 0  Opens: 117  Flush tables: 3  Open tab
 
 mysql> 
 
+2. Количество записей с `price` > 300.
+
+mysql> select count(*) from orders where price > 300;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
 ```
 
 ## Задача 2
