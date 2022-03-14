@@ -25,6 +25,8 @@
 В следующих заданиях мы будем продолжать работу с данным контейнером.
 
 ### Ответ
+
+```
 1. Статус MySQL
 
 mysql> \s
@@ -53,8 +55,6 @@ Threads: 2  Questions: 5  Slow queries: 0  Opens: 117  Flush tables: 3  Open tab
 --------------
 
 mysql> 
-
-```
 
 ```
 
