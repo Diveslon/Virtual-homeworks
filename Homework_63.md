@@ -97,6 +97,9 @@ mysql> ALTER USER 'test' FAILED_LOGIN_ATTEMPTS 3;
 Query OK, 0 rows affected (0.00 sec)
 mysql> ALTER USER 'test' ATTRIBUTE '{"fname": "Pretty", "lname": "James"}';
 Query OK, 0 rows affected (0.01 sec)
+mysql> GRANT SELECT ON db.* TO 'test';
+Query OK, 0 rows affected (0.04 sec)
+
 
 Используя таблицу INFORMATION_SCHEMA.USER_ATTRIBUTES получите данные по пользователю `test` 
 mysql> SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE user='test';
