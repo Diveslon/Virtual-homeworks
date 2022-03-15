@@ -123,6 +123,52 @@ mysql> SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE user='test';
 - на `MyISAM`
 - на `InnoDB`
 
+### Ответ
+```
+mysql> ALTER TABLE orders ENGINE = MyISAM;
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE TABLE_NAME = 'orders';
++------------+--------+
+| TABLE_NAME | ENGINE |
++------------+--------+
+| orders     | MyISAM |
++------------+--------+
+1 row in set (0.01 sec)
+
+mysql> SHOW PROFILES;
++----------+------------+-------------------------------------------------------------------------------------------------------+
+| Query_ID | Duration   | Query                                                                                                 |
++----------+------------+-------------------------------------------------------------------------------------------------------+
+|        1 | 0.00199675 | SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'test_db' AND TABLE_NAME = 'orders' |
+|        2 | 0.00245400 | SELECT * FROM information_schema.TABLES WHERE TABLE_NAME = 'orders'                                   |
+|        3 | 0.00189700 | SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE TABLE_NAME = 'orders'                  |
+|        4 | 0.03264475 | ALTER TABLE orders ENGINE = MyISAM                                                                    |
+|        5 | 0.00185650 | SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE TABLE_NAME = 'orders'                  |
++----------+------------+-------------------------------------------------------------------------------------------------------+
+5 rows in set, 1 warning (0.00 sec)
+
+mysql> ALTER TABLE orders ENGINE = InnoDB;
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SHOW PROFILES;
++----------+------------+-------------------------------------------------------------------------------------------------------+
+| Query_ID | Duration   | Query                                                                                                 |
++----------+------------+-------------------------------------------------------------------------------------------------------+
+|        1 | 0.00199675 | SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'test_db' AND TABLE_NAME = 'orders' |
+|        2 | 0.00245400 | SELECT * FROM information_schema.TABLES WHERE TABLE_NAME = 'orders'                                   |
+|        3 | 0.00189700 | SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE TABLE_NAME = 'orders'                  |
+|        4 | 0.03264475 | ALTER TABLE orders ENGINE = MyISAM                                                                    |
+|        5 | 0.00185650 | SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE TABLE_NAME = 'orders'                  |
+|        6 | 0.02276850 | ALTER TABLE orders ENGINE = InnoDB                                                                    |
++----------+------------+-------------------------------------------------------------------------------------------------------+
+6 rows in set, 1 warning (0.00 sec)
+
+
+```
+
 ## Задача 4 
 
 Изучите файл `my.cnf` в директории /etc/mysql.
