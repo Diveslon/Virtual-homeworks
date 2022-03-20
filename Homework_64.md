@@ -132,4 +132,19 @@ root@20df11152f5f:/# cd /backup/
 root@20df11152f5f:/backup# ls
 test_dump.sql  test_new.dump
 ```
-
+Чтобы добавить уникальность значения столбца `title`, я бы заменил создание таблицы
+```
+CREATE TABLE public.orders (
+    id integer NOT NULL,
+    title character varying(80) NOT NULL,
+    price integer DEFAULT 0
+);
+```
+на
+```
+CREATE TABLE public.orders (
+    id integer NOT NULL,
+    title character varying(80) NOT NULL UNIQUE,
+    price integer DEFAULT 0
+);
+```
