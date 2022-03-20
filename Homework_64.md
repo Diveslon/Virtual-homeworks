@@ -124,3 +124,12 @@ CREATE TABLE
 Используя утилиту `pg_dump` создайте бекап БД `test_database`.
 
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
+
+### Ответ
+```
+root@20df11152f5f:/# pg_dump test_database > /backup/test_new.dump 
+root@20df11152f5f:/# cd /backup/
+root@20df11152f5f:/backup# ls
+test_dump.sql  test_new.dump
+```
+
