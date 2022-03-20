@@ -72,8 +72,11 @@ root=# \l
  test_database | root  | UTF8     | en_US.utf8 | en_US.utf8 | 
 (5 rows)
 ```
+
 ```
 root@20df11152f5f:/backup# psql test_database < /backup/test_dump.sql 
+```
+
 ```
 root=# \c test_database
 You are now connected to database "test_database" as user "root".
@@ -83,6 +86,7 @@ INFO:  "orders": scanned 1 of 1 pages, containing 8 live rows and 8 dead rows; 8
 ANALYZE
 test_database=#
 ```
+
 ```
 root=# 
 
