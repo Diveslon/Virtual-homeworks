@@ -31,6 +31,52 @@
 
 Далее мы будем работать с данным экземпляром elasticsearch.
 
+### Ответ
+- текст Dockerfile манифеста
+```
+FROM centos:7
+
+MAINTAINER Alexander Lon <5227676@gmail.com>
+
+USER root
+
+RUN \
+    yum install -y wget && \
+    yum install -y perl-Digest-SHA && \
+    yum install -y java-11-openjdk && \
+    yum install -y java-11-openjdk-devel 
+RUN useradd elasticsearch -c "elastisearch user" -d /home/elasticsearch
+RUN \
+    mkdir -p /local/elasticsearch-8.1.1 && \
+    chown elasticsearch:elasticsearch /var/lib &&\
+    chown elasticsearch:elasticsearch /local/elasticsearch-8.1.1
+USER elasticsearch
+ENV ES_HOME=/local/elasticsearch-8.1.1
+ENV ES_CONFIG=/local/elasticsearch-8.1.1/config/elasticsearch.yml
+
+EXPOSE 9200
+EXPOSE 9300
+    
+RUN \
+    cd /tmp && \
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.1.1-linux-x86_64.tar.gz && \
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512 && \
+    shasum -a 512 -c elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512 && \
+    tar -xzf elasticsearch-8.1.1-linux-x86_64.tar.gz && \
+    rm elasticsearch-8.1.1-linux-x86_64.tar.gz && \
+    rm elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512 && \
+    mv /tmp/elasticsearch-8.1.1/* $ES_HOME
+
+RUN \
+    echo "cluster.name: netology_cluster" >> $ES_CONFIG && \
+    echo "node.name: netology_test" >> $ES_CONFIG && \
+    echo "path.data: /var/lib" >> $ES_CONFIG
+
+CMD $ES_HOME/bin/elasticsearch
+```
+- ссылка на образ в репозитории dockerhub
+
+
 ## Задача 2
 
 В этом задании вы научитесь:
