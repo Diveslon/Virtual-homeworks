@@ -308,14 +308,21 @@ drwxr-xr-x 5 elastic elastic  4096 Apr  2 16:32 indices
 -rw-r--r-- 1 elastic elastic   386 Apr  2 16:32 snap-agIcXu2RRg287Yoz5zfF4g.dat
 
 ```
+Удалите индекс `test` и создайте индекс `test-2`. Приведите в ответе список индексов.
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  https://localhost:9200/_cat/indices
+Enter host password for user 'elastic':
+green open test-2 F56xk21cQdKnflhQg6THzA 1 0 0 0 225b 225b
+```
+Восстановите состояние кластера `elasticsearch` из `snapshot`, созданного ранее. Приведите в ответе запрос к API восстановления и итоговый список индексов.
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X POST 'https://localhost:9200/_snapshot/netology_backup/my_snapshot/_restore?wait_for_completion=true'
+Enter host password for user 'elastic':
+{"snapshot":{"snapshot":"my_snapshot","indices":["test"],"shards":{"total":1,"failed":0,"successful":1}}}
 
+diveslon-Ubuntu:~/homework65$ curl -ku elastic  https://localhost:9200/_cat/indices
+Enter host password for user 'elastic':
+green open test-2 F56xk21cQdKnflhQg6THzA 1 0 0 0 225b 225b
+green open test   uJLSE4jbRuKNIW0CFV0BiQ 1 0 0 0 225b 225b
 
-
-
----
-
-### Как cдавать задание
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
----
+```
