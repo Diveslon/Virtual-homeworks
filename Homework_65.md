@@ -252,6 +252,19 @@ Enter host password for user 'elastic':
 Подсказки:
 - возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
 
+### Ответ
+Доработаем Dockerfile, добавив создание директории и назначение прав ( пока ещё под рутом)
+```
+RUN \
+    mkdir -p /local/elasticsearch && \
+    mkdir -p /var/lib/elasticsearch && \
+    mkdir -p /local/elasticsearch/snapshots && \
+    chown elastic /var/lib/elasticsearch && \
+    chown elastic /local/elasticsearch/snapshots && \
+    chown elastic /local/elasticsearch
+```
+
+
 ---
 
 ### Как cдавать задание
