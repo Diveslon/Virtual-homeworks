@@ -179,6 +179,43 @@ green  open ind-1 pJJ2M0zCS1Os1-evh2MkrQ 1 0 0 0 225b 225b
 yellow open ind-3 i_ag2-KBQ9e5s5yapxEAvw 4 2 0 0 900b 900b
 yellow open ind-2 rGxeMCU2R8-pmF1OLZP-EQ 2 1 0 0 450b 450b
 ```
+Получите состояние кластера `elasticsearch`, используя API.
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  https://localhost:9200/_cluster/health?pretty
+Enter host password for user 'elastic':
+{
+  "cluster_name" : "netology_cluster",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 9,
+  "active_shards" : 9,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 10,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 47.368421052631575
+}
+```
+- Часть индексов жёлтые, поскольку созданы с количеством реплик и шард больше, чем фактически есть
+- Сам кластер жёлтый, так как unassigned_shards > 0
+
+Удалите все индексы
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  -X DELETE https://localhost:9200/ind-1
+Enter host password for user 'elastic':
+{"acknowledged":true}
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  -X DELETE https://localhost:9200/ind-2
+Enter host password for user 'elastic':
+{"acknowledged":true}
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  -X DELETE https://localhost:9200/ind-3
+Enter host password for user 'elastic':
+{"acknowledged":true}
+```
 
 **Важно**
 
