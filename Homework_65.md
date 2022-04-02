@@ -292,6 +292,23 @@ diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  https://localhost:9200/
 Enter host password for user 'elastic':
 green open test z5_H6SEQR1acvY89_q_EMw 1 0 0 0 225b 225b
 ```
+Создайте `snapshot` состояния кластера `elasticsearch` и приведите в ответе список файлов в директории со `snapshot`ами.
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT https://localhost:9200/_snapshot/netology_backup/my_snapshot?wait_for_completion=true
+Enter host password for user 'elastic':
+{"snapshot":{"snapshot":"my_snapshot","uuid":"agIcXu2RRg287Yoz5zfF4g","repository":"netology_backup","version_id":8010199,"version":"8.1.1","indices":["test",".security-7",".geoip_databases"],"data_streams":[],"include_global_state":true,"state":"SUCCESS","start_time":"2022-04-02T16:32:08.181Z","start_time_in_millis":1648917128181,"end_time":"2022-04-02T16:32:09.181Z","end_time_in_millis":1648917129181,"duration_in_millis":1000,"failures":[],"shards":{"total":3,"failed":0,"successful":3},"feature_states":[{"feature_name":"geoip","indices":[".geoip_databases"]},{"feature_name":"security","indices":[".security-7"]}]}}
+diveslon@diveslon-Ubuntu:~/homework65$ sudo docker exec -it es2 ls -la /local/elasticsearch/snapshots/
+total 48
+drwxr-xr-x 1 elastic root     4096 Apr  2 16:32 .
+drwxr-xr-x 1 elastic root     4096 Apr  2 16:09 ..
+-rw-r--r-- 1 elastic elastic  1096 Apr  2 16:32 index-0
+-rw-r--r-- 1 elastic elastic     8 Apr  2 16:32 index.latest
+drwxr-xr-x 5 elastic elastic  4096 Apr  2 16:32 indices
+-rw-r--r-- 1 elastic elastic 18424 Apr  2 16:32 meta-agIcXu2RRg287Yoz5zfF4g.dat
+-rw-r--r-- 1 elastic elastic   386 Apr  2 16:32 snap-agIcXu2RRg287Yoz5zfF4g.dat
+
+```
+
 
 
 
