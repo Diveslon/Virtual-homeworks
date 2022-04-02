@@ -129,6 +129,48 @@ Enter host password for user 'elastic':
 
 Удалите все индексы.
 
+### Ответ
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT "https://localhost:9200/ind-1" -H 'Content-Type: application/json' -d'
+> {
+>          "settings": {
+>            "index": {
+>              "number_of_shards": 1,
+>              "number_of_replicas": 0
+>            }
+>           }
+>         }
+>       '
+Enter host password for user 'elastic':
+{"acknowledged":true,"shards_acknowledged":true,"index":"ind-1"}
+
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT "https://localhost:9200/ind-2" -H 'Content-Type: application/json' -d'
+{
+         "settings": {
+           "index": {
+             "number_of_shards": 2,
+             "number_of_replicas": 1
+           }
+          }
+        }
+      '
+Enter host password for user 'elastic':
+{"acknowledged":true,"shards_acknowledged":true,"index":"ind-2"}
+
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT "https://localhost:9200/ind-3" -H 'Content-Type: application/json' -d'
+> {
+>          "settings": {
+>            "index": {
+>              "number_of_shards": 4,
+>              "number_of_replicas": 2
+>            }
+>           }
+>         }
+>       '
+Enter host password for user 'elastic':
+{"acknowledged":true,"shards_acknowledged":true,"index":"ind-3"}
+```
+
 **Важно**
 
 При проектировании кластера elasticsearch нужно корректно рассчитывать количество реплик и шард,
