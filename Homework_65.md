@@ -38,24 +38,31 @@ FROM centos:7
 
 MAINTAINER Alexander Lon <5227676@gmail.com>
 
+EXPOSE 9200
+
 USER root
 
 RUN \
     yum install -y wget && \
     yum install -y perl-Digest-SHA && \
-    yum install -y java-11-openjdk && \
-    yum install -y java-11-openjdk-devel 
-RUN useradd elasticsearch -c "elastisearch user" -d /home/elasticsearch
+    yum install -y java-11-openjdk  && \
+    yum install -y java-11-openjdk-devel
+RUN useradd elastic -c "elastisearch user" -d /home/elastic
 RUN \
-    mkdir -p /local/elasticsearch-8.1.1 && \
-    chown elasticsearch:elasticsearch /var/lib &&\
-    chown elasticsearch:elasticsearch /local/elasticsearch-8.1.1
-USER elasticsearch
-ENV ES_HOME=/local/elasticsearch-8.1.1
-ENV ES_CONFIG=/local/elasticsearch-8.1.1/config/elasticsearch.yml
+    mkdir -p /local/elasticsearch && \
+    mkdir -p /var/lib/elasticsearch && \
+    chown elastic /var/lib/elasticsearch &&\
+    chown elastic /local/elasticsearch
+USER elastic
 
-EXPOSE 9200
-EXPOSE 9300
+ENV ES_HOME=/local/elasticsearch
+ENV ES_CONFIG=/local/elasticsearch/config/elasticsearch.yml
+
+LABEL io.k8s.description="Elasticsearch container" \
+      io.openshift.expose-services="9200:http, 9300:http" \
+      io.openshift.tags="elasticsearch" \
+      architecture=x86_64 \
+      name="openshift3/elasticsearch"
     
 RUN \
     cd /tmp && \
@@ -70,7 +77,7 @@ RUN \
 RUN \
     echo "cluster.name: netology_cluster" >> $ES_CONFIG && \
     echo "node.name: netology_test" >> $ES_CONFIG && \
-    echo "path.data: /var/lib" >> $ES_CONFIG
+    echo "path.data: /var/lib/elasticsearch" >> $ES_CONFIG
 
 CMD $ES_HOME/bin/elasticsearch
 ```
