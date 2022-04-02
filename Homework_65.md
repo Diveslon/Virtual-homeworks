@@ -84,12 +84,12 @@ CMD $ES_HOME/bin/elasticsearch
 - ссылка на образ в репозитории dockerhub
 - ответ `elasticsearch` на запрос пути `/` в json виде
 ```
-[elastic@35677879033b /]$ curl -ku elastic https://localhost:9200
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic https://localhost:9200
 Enter host password for user 'elastic':
 {
   "name" : "netology_test",
   "cluster_name" : "netology_cluster",
-  "cluster_uuid" : "5FY8px9vRyScVjbSDvFNZA",
+  "cluster_uuid" : "Ya6Ngs6qQy2fSXzt3Z96dQ",
   "version" : {
     "number" : "8.1.1",
     "build_flavor" : "default",
