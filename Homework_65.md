@@ -130,6 +130,7 @@ Enter host password for user 'elastic':
 Удалите все индексы.
 
 ### Ответ
+Ознакомтесь с документацией]и добавьте в `elasticsearch` 3 индекса
 ```
 diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT "https://localhost:9200/ind-1" -H 'Content-Type: application/json' -d'
 > {
@@ -169,6 +170,14 @@ diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT "https://localhos
 >       '
 Enter host password for user 'elastic':
 {"acknowledged":true,"shards_acknowledged":true,"index":"ind-3"}
+```
+Получите список индексов и их статусов, используя API
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  https://localhost:9200/_cat/indices
+Enter host password for user 'elastic':
+green  open ind-1 pJJ2M0zCS1Os1-evh2MkrQ 1 0 0 0 225b 225b
+yellow open ind-3 i_ag2-KBQ9e5s5yapxEAvw 4 2 0 0 900b 900b
+yellow open ind-2 rGxeMCU2R8-pmF1OLZP-EQ 2 1 0 0 450b 450b
 ```
 
 **Важно**
