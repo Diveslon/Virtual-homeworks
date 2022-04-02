@@ -81,7 +81,7 @@ RUN \
 
 CMD $ES_HOME/bin/elasticsearch
 ```
-- ссылка на образ в репозитории dockerhub
+- ссылка на образ в репозитории dockerhub https://hub.docker.com/repository/docker/diveslon/homework65/tags
 - ответ `elasticsearch` на запрос пути `/` в json виде
 ```
 diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic https://localhost:9200
