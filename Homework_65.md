@@ -286,6 +286,13 @@ Enter host password for user 'elastic':
 }
 
 ```
+Создайте индекс `test` с 0 реплик и 1 шардом и приведите в ответе список индексов
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic  https://localhost:9200/_cat/indices
+Enter host password for user 'elastic':
+green open test z5_H6SEQR1acvY89_q_EMw 1 0 0 0 225b 225b
+```
+
 
 
 ---
