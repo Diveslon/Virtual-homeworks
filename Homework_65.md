@@ -268,7 +268,7 @@ RUN \
 RUN \
     echo "cluster.name: netology_cluster" >> $ES_CONFIG && \
     echo "node.name: netology_test" >> $ES_CONFIG && \
-    echo "path.repo: /local/elasticsearch/spashots" >> $ES_CONFIG && \
+    echo "path.repo: /local/elasticsearch/snapshots" >> $ES_CONFIG && \
     echo "path.data: /var/lib/elasticsearch" >> $ES_CONFIG
 ```
 
