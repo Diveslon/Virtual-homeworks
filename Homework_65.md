@@ -271,6 +271,21 @@ RUN \
     echo "path.repo: /local/elasticsearch/snapshots" >> $ES_CONFIG && \
     echo "path.data: /var/lib/elasticsearch" >> $ES_CONFIG
 ```
+Используя API зарегистрируйте данную директорию как `snapshot repository` c именем `netology_backup`
+```
+diveslon@diveslon-Ubuntu:~/homework65$ curl -ku elastic -X PUT "https://localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d' 
+{ 
+"type": "fs", 
+"settings": {
+ "location": "/local/elasticsearch/snapshots" 
+}
+ } '
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+
+```
 
 
 ---
