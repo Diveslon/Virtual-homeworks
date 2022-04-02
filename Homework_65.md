@@ -263,6 +263,14 @@ RUN \
     chown elastic /local/elasticsearch/snapshots && \
     chown elastic /local/elasticsearch
 ```
+и под пользователем elastic
+```
+RUN \
+    echo "cluster.name: netology_cluster" >> $ES_CONFIG && \
+    echo "node.name: netology_test" >> $ES_CONFIG && \
+    echo "path.repo: /local/elasticsearch/spashots" >> $ES_CONFIG && \
+    echo "path.data: /var/lib/elasticsearch" >> $ES_CONFIG
+```
 
 
 ---
