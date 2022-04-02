@@ -75,7 +75,28 @@ RUN \
 CMD $ES_HOME/bin/elasticsearch
 ```
 - ссылка на образ в репозитории dockerhub
-
+- ответ `elasticsearch` на запрос пути `/` в json виде
+```
+[elastic@35677879033b /]$ curl -ku elastic https://localhost:9200
+Enter host password for user 'elastic':
+{
+  "name" : "netology_test",
+  "cluster_name" : "netology_cluster",
+  "cluster_uuid" : "5FY8px9vRyScVjbSDvFNZA",
+  "version" : {
+    "number" : "8.1.1",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "d0925dd6f22e07b935750420a3155db6e5c58381",
+    "build_date" : "2022-03-17T22:01:32.658689558Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.0.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 ## Задача 2
 
