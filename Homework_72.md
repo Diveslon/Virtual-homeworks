@@ -74,7 +74,7 @@ secret_key     ****************Ol/e              env
 ### Ответ
 
 1. Создать ami образ можно при помощи Terraform
-2. [Ссылка на репозиторий] (https://github.com/Diveslon/Terraform_72)
+2. [Ссылка на репозиторий](https://github.com/Diveslon/Terraform_72)
  
 ---
 
